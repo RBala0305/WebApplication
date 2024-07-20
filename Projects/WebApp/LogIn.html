@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log In</title>
+    <script>
+        function validateForm() {
+            var email = document.forms["loginForm"]["email"].value;
+            var password = document.forms["loginForm"]["password"].value;
+
+            if (email == "" || password == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Log In</h2>
+    <form name="loginForm" action="/api/users/login" onsubmit="return validateForm()" method="post">
+        Email: <input type="text" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Log In">
+    </form>
+</body>
+</html>

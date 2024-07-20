@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <script>
+        function validateForm() {
+            var username = document.forms["signupForm"]["username"].value;
+            var email = document.forms["signupForm"]["email"].value;
+            var password = document.forms["signupForm"]["password"].value;
+
+            if (username == "" || email == "" || password == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    <form name="signupForm" action="/api/users/signup" onsubmit="return validateForm()" method="post">
+        Username: <input type="text" name="username"><br>
+        Email: <input type="text" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Sign Up">
+    </form>
+</body>
+</html>

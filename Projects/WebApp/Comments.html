@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comments</title>
+</head>
+<body>
+    <h2>Submit Comment</h2>
+    <form action="/api/comments" method="post">
+        Email: <input type="text" name="email"><br>
+        Comment: <textarea name="comment"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+    <h2>All Comments</h2>
+    <ul id="commentsList">
+    </ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            fetch('/api/comments')
+                .then(response => response.json())
+                .then(comments => {
+                    let commentsList = document.getElementById('commentsList');
+                    comments.forEach(comment => {
+                        let li = document.createElement('li');
+                        li.innerText = comment.user.username + ': ' + comment.comment;
+                        commentsList.appendChild(li);
+                    });
+                });
+        });
+    </script>
+</body>
+</html>
